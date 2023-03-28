@@ -1,0 +1,20 @@
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfTwo = function(n) {
+    //Runtime: 84 ms, faster than 98.69% of JavaScript online submissions for Power of Two.
+    //Memory Usage: 40.2 MB, less than 9.53% of JavaScript online submissions for Power of Two.
+    
+    if(n === 1){
+        return true;
+    }else if(n <= 0){
+        return false;
+    }
+    
+    if(n%2 !== 0){
+        return false;
+    }else{
+        return isPowerOfTwo(Math.floor(n/2));    
+    }
+};
