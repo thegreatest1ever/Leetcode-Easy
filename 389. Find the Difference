@@ -1,0 +1,20 @@
+function findTheDifference(s, t) {
+  // Create a frequency counter object for s
+  const frequencyCounterS = {};
+  for (let char of s) {
+    frequencyCounterS[char] = (frequencyCounterS[char] || 0) + 1;
+  }
+  
+  // Create a frequency counter object for t
+  const frequencyCounterT = {};
+  for (let char of t) {
+    frequencyCounterT[char] = (frequencyCounterT[char] || 0) + 1;
+  }
+  
+  // Compare the two frequency counter objects to find the added letter
+  for (let char in frequencyCounterT) {
+    if (frequencyCounterT[char] !== frequencyCounterS[char]) {
+      return char;
+    }
+  }
+}
