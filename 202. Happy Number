@@ -1,0 +1,19 @@
+function isHappy(n) {
+  let seenNumbers = new Set();
+  while (n !== 1) {
+    let digitSum = 0;
+    let digits = n.toString().split("");
+    for (let i = 0; i < digits.length; i++) {
+      digitSum += Math.pow(parseInt(digits[i]), 2);
+    }
+    if (digitSum === 1) {
+      return true;
+    }
+    if (seenNumbers.has(digitSum)) {
+      return false;
+    }
+    seenNumbers.add(digitSum);
+    n = digitSum;
+  }
+  return true;
+}
