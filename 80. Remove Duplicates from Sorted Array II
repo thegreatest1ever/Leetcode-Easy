@@ -1,0 +1,18 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    let index = 0;
+    for(let i=0; i<nums.length; i++){
+        if(nums[i] !== nums[i+2]){
+            nums[index++] = nums[i];
+        }
+    }
+    return index;
+};
+/*
+However, there is a potential issue with the implementation. 
+The code tries to check nums[i+2] within the loop, but it could cause an "out of bounds" error when i approaches the end of the array.
+To fix this issue, you could modify the loop condition to i < nums.length - 2, which ensures that there are at least two more elements ahead to compare.
+*/
