@@ -2,36 +2,21 @@
  * @param {string} s
  * @return {number}
  */
-//var lengthOfLongestSubstring = function(s) {
-//    
-//};
 function lengthOfLongestSubstring(s) {
-  // Create a set to store the seen characters.
-  const seen = new Set();
-
-  // Initialize the start and end indexes.
+  const seen = new Map();
   let start = 0;
   let end = 0;
-
-  // Initialize the maximum length.
   let maxLen = 0;
 
-  // Iterate through the string.
   for (let i = 0; i < s.length; i++) {
-    // If the character is not seen yet, add it to the set and update the end index.
-    if (!seen.has(s[i])) {
-      seen.add(s[i]);
-      end++;
-    } else {
-      // If the character is seen, remove the first character from the set and update the start index.
-      seen.delete(s[start]);
-      start++;
+    const char = s[i];
+    if (seen.has(char) && seen.get(char) >= start) {
+      start = seen.get(char) + 1;
     }
-
-    // Update the maximum length.
+    seen.set(char, i);
+    end = i + 1;
     maxLen = Math.max(maxLen, end - start);
   }
 
-  // Return the maximum length.
   return maxLen;
 }
