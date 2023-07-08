@@ -22,3 +22,28 @@ function maxProfit(prices) {
   // Return the maximum profit
   return maxProfit;
 }
+
+//
+def max_profit(prices):
+  """
+  Finds the maximum profit that can be made from buying at the lowest price and selling later at the highest price.
+
+  Args:
+    prices: An array of prices.
+
+  Returns:
+    The maximum profit.
+  """
+
+  min_price = float("inf")
+  max_profit = 0
+
+  for price in prices:
+    if price < min_price:
+      min_price = price
+
+    profit = price - min_price
+    if profit > max_profit:
+      max_profit = profit
+
+  return max_profit
