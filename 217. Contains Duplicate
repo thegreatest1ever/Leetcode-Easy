@@ -1,0 +1,18 @@
+function containsDuplicate(nums) {
+  // Create a set to store the unique values in the array.
+  const seen = new Set();
+
+  // Iterate over the array and add each value to the set.
+  for (const num of nums) {
+    if (seen.has(num)) {
+      // If the value is already in the set, then the array contains duplicates.
+      return true;
+    } else {
+      // Add the value to the set.
+      seen.add(num);
+    }
+  }
+
+  // If the loop completed without finding any duplicates, then the array is distinct.
+  return false;
+}
