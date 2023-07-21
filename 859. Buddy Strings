@@ -19,3 +19,21 @@ function buddyStrings(s, goal) {
   // If there are exactly two differences and swapping them makes the strings equal
   return differences.length === 2 && s[differences[0]] === goal[differences[1]] && s[differences[1]] === goal[differences[0]];
 }
+//
+class Solution(object):
+  def buddyStrings(self, s, goal):
+    if len(s) != len(goal):
+        return False  # If the lengths are different, swapping won't make them equal
+
+    if s == goal:
+        # If both strings are equal, check for duplicate characters to swap
+        char_set = set(s)
+        return len(char_set) < len(s)
+
+    differences = []
+    for i in range(len(s)):
+        if s[i] != goal[i]:
+            differences.append(i)
+
+    # If there are exactly two differences and swapping them makes the strings equal
+    return len(differences) == 2 and s[differences[0]] == goal[differences[1]] and s[differences[1]] == goal[differences[0]]
