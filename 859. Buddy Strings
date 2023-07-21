@@ -1,0 +1,21 @@
+function buddyStrings(s, goal) {
+  if (s.length !== goal.length) {
+    return false; // If the lengths are different, swapping won't make them equal
+  }
+
+  if (s === goal) {
+    // If both strings are equal, check for duplicate characters to swap
+    const charSet = new Set(s);
+    return charSet.size < s.length;
+  }
+
+  let differences = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== goal[i]) {
+      differences.push(i);
+    }
+  }
+
+  // If there are exactly two differences and swapping them makes the strings equal
+  return differences.length === 2 && s[differences[0]] === goal[differences[1]] && s[differences[1]] === goal[differences[0]];
+}
