@@ -1,0 +1,31 @@
+function searchMatrix(matrix, target) {
+  // Check if the matrix is empty.
+  if (matrix.length === 0) {
+    return false;
+  }
+
+  // Get the number of rows and columns in the matrix.
+  const rows = matrix.length;
+  const columns = matrix[0].length;
+
+  // Initialize the row and column indexes.
+  let row = 0;
+  let column = columns - 1;
+
+  // Loop until the row index is out of bounds or the target is found.
+  while (row < rows && column >= 0) {
+    // Check if the current element is the target.
+    if (matrix[row][column] === target) {
+      return true;
+    } else if (matrix[row][column] < target) {
+      // Increment the row index.
+      row++;
+    } else {
+      // Decrement the column index.
+      column--;
+    }
+  }
+
+  // The target was not found.
+  return false;
+}
