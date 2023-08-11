@@ -29,3 +29,22 @@ function searchMatrix(matrix, target) {
   // The target was not found.
   return false;
 }
+//
+class Solution(object):
+  def searchMatrix(self, matrix, target):
+    if not matrix:
+      return False
+    rows = len(matrix)
+    columns = len(matrix[0])
+    
+    row = 0
+    column = columns - 1
+    
+    while row < rows and column >= 0:
+      if matrix[row][column] == target:
+        return True
+      elif matrix[row][column] < target:
+        row += 1
+      else:
+        column -= 1
+    return False
