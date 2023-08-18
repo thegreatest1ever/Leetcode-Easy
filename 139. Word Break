@@ -21,3 +21,19 @@ function wordBreak(s, wordDict) {
   // The final value in dp array indicates whether the entire string can be segmented.
   return dp[s.length - 1];
 }
+//
+
+class Solution(object):
+  def wordBreak(self, s, wordDict):
+    n = len(s)
+    dp = [False] * n
+    
+    for i in range(n):
+      if s[:i + 1] in wordDict:
+        dp[i] = True
+      else:
+          for j in range(i):
+            if dp[j] and s[j + 1:i + 1] in wordDict:
+              dp[i] = True
+              break
+    return dp[-1]
