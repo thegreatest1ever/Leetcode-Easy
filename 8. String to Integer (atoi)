@@ -29,3 +29,28 @@ function myAtoi(s) {
 function isDigit(char) {
   return char >= '0' && char <= '9';
 }
+//
+class Solution(object):
+    def myAtoi(self, s):
+        # Ignore leading whitespace.
+        i = 0
+        while i < len(s) and s[i] == ' ':
+            i += 1
+
+        # Check for the sign character.
+        sign = 1
+        if i < len(s) and (s[i] == '+' or s[i] == '-'):
+            sign = 1 if s[i] == '+' else -1
+            i += 1
+
+        # Read in the digits.
+        number = 0
+        while i < len(s) and s[i].isdigit():
+            digit = int(s[i])
+            number = number * 10 + digit
+            i += 1
+
+        # Clamp the integer to the 32-bit signed integer range.
+        number = max(-2**31, min(2**31 - 1, number * sign))
+
+        return number
