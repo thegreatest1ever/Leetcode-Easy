@@ -1,0 +1,31 @@
+function myAtoi(s) {
+  // Ignore leading whitespace.
+  let i = 0;
+  while (i < s.length && s[i] === ' ') {
+    i++;
+  }
+
+  // Check for the sign character.
+  let sign = 1;
+  if (i < s.length && (s[i] === '+' || s[i] === '-')) {
+    sign = s[i] === '+' ? 1 : -1;
+    i++;
+  }
+
+  // Read in the digits.
+  let number = 0;
+  while (i < s.length && isDigit(s[i])) {
+    const digit = s[i] - '0';
+    number = number * 10 + digit;
+    i++;
+  }
+
+  // Clamp the integer to the 32-bit signed integer range.
+  number = Math.max(-Math.pow(2, 31), Math.min(Math.pow(2, 31) - 1, number * sign));
+
+  return number;
+}
+
+function isDigit(char) {
+  return char >= '0' && char <= '9';
+}
