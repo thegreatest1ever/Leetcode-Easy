@@ -1,0 +1,33 @@
+function longestPalindrome(str) {
+  if (str === null || str.length < 1) {
+    return "";
+  }
+
+  let start = 0; // The starting index of the longest palindrome substring.
+  let end = 0;   // The ending index of the longest palindrome substring.
+
+  for (let i = 0; i < str.length; i++) {
+    // Find the length of the longest palindrome centered at str[i].
+    const len1 = expandAroundCenter(str, i, i);
+    const len2 = expandAroundCenter(str, i, i + 1);
+    const maxLength = Math.max(len1, len2);
+
+    // Update the start and end indices if a longer palindrome is found.
+    if (maxLength > end - start) {
+      start = i - Math.floor((maxLength - 1) / 2);
+      end = i + Math.floor(maxLength / 2);
+    }
+  }
+
+  // Extract and return the longest palindrome substring.
+  return str.substring(start, end + 1);
+}
+
+function expandAroundCenter(str, left, right) {
+  // Expand around the center while the characters at left and right are equal.
+  while (left >= 0 && right < str.length && str[left] === str[right]) {
+    left--;
+    right++;
+  }
+  return right - left - 1; // Return the length of the palindrome.
+}
