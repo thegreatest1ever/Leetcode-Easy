@@ -1,0 +1,7 @@
+function rotate(nums, k) {
+  const n = nums.length;
+  k = (k % n + n) % n; // Ensure k is a non-negative integer within the range of array length
+
+  const spliced = nums.splice(n - k);
+  nums.unshift(...spliced);
+  return nums;
