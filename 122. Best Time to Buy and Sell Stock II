@@ -10,3 +10,13 @@ function maxProfit(prices) {
 
  return positiveDifferenceSum;
 }
+//
+class Solution(object):
+    
+    def maxProfit(self, prices):
+        positive_difference_sum = 0
+        for i in range(1, len(prices)):
+            difference = prices[i] - prices[i - 1]
+            if difference > 0:
+                positive_difference_sum += difference
+        return positive_difference_sum
